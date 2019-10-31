@@ -1,5 +1,5 @@
 var node_echarts = require('node-echarts');
-
+const fs = require('fs')
 let path = require('path');
 let chinaJson = require('./map.json')
 
@@ -103,15 +103,61 @@ const option = {
           borderWidth: 0
         }
       }
+    },
+    {
+      name: 'Top 5',
+      type: 'effectScatter',
+      coordinateSystem: 'geo',
+      data: convertData(data.sort(function (a, b) {
+        return b.value - a.value;
+      }).slice(0, 3)),
+      encode: {
+        value: 2
+      },
+      symbolSize: function (val) {
+        return val[2] / 25;
+      },
+      showEffectOn: 'render',
+      rippleEffect: {
+        brushType: 'fill',
+        period: 5,//周期
+        scale: 3,//波纹比例
+      },
+      hoverAnimation: false,
+      // label: {
+      //   normal: {
+      //     formatter: '{b}',
+      //     position: 'right',
+      //     show: true
+      //   }
+      // },
+      itemStyle: {
+        emphasis: {
+          borderColor: '#fff',
+          borderWidth: 0
+        }
+      }
+      // zlevel: 1
     }
   ]
 }
 module.exports = option
 
-node_echarts({
-  path: __dirname + '/area.png',
-  option: option,
-  width: 1000,
-  height: 500
-}, chinaJson)
+fs.readdirSync('image').map((file) => {
+  fs.unlink(`image/${file}`,(err) => {
+    if (err) {
+      console.log(err);
+    } else {
+      console.log('delete ok');
+    }
+  });
+});
+
+  node_echarts({
+    path: __dirname + `/image/area`,
+    option: option,
+    width: 1000,
+    height: 500
+  }, chinaJson)
+
 
