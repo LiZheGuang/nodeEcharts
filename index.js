@@ -1,9 +1,43 @@
-var node_echarts = require('node-echarts');
+var node_echarts = require('./lib/nodeEcharts');
 const fs = require('fs')
 let path = require('path');
 let chinaJson = require('./map.json')
 
-let data = [{ name: "福建", value: 87.78846153846153 }, { name: "河北", value: 137.5 }, { name: "北京", value: 51.82692307692307 }, { name: "山西", value: 63.46153846153847 }, { name: "河南", value: 211.53846153846155 }, { name: "江苏", value: 96.25 }, { name: "陕西", value: 60.28846153846154 }, { name: "云南", value: 56.05769230769231 }, { name: "湖南", value: 105.76923076923077 }, { name: "新疆", value: 47.59615384615385 }, { name: "广东", value: 275 }, { name: "台湾", value: 0.1798076923076923 }, { name: "江西", value: 98.36538461538461 }, { name: "山东", value: 222.1153846153846 }, { name: "海南", value: 10.048076923076923 }, { name: "安徽", value: 89.90384615384616 }, { name: "黑龙江", value: 40.19230769230769 }, { name: "湖北", value: 78.26923076923076 }, { name: "甘肃", value: 34.90384615384615 }, { name: "四川", value: 126.92307692307693 }, { name: "浙江", value: 87.78846153846153 }, { name: "辽宁", value: 41.25 }, { name: "青海", value: 8.461538461538462 }, { name: "内蒙古", value: 40.19230769230769 }, { name: "天津", value: 28.55769230769231 }, { name: "西藏", value: 1.798076923076923 }, { name: "贵州", value: 71.92307692307693 }, { name: "宁夏", value: 22.211538461538463 }, { name: "上海", value: 24.326923076923077 }, { name: "广西", value: 99.42307692307692 }, { name: "香港特别行政区", value: 0.033846153846153845 }, { name: "吉林", value: 29.615384615384617 }, { name: "澳门特别行政区", value: 0.023269230769230768 }, { name: "重庆", value: 56.05769230769231 }]
+let data = [
+  { name: "福建", value: 87.78846153846153 },
+  { name: "河北", value: 137.5 },
+  { name: "北京", value: 51.82692307692307 },
+  { name: "山西", value: 63.46153846153847 },
+  { name: "河南", value: 211.53846153846155 },
+  { name: "江苏", value: 96.25 },
+  { name: "陕西", value: 60.28846153846154 },
+  { name: "云南", value: 56.05769230769231 },
+  { name: "湖南", value: 105.76923076923077 },
+  { name: "新疆", value: 47.59615384615385 },
+  { name: "广东", value: 275 },
+  { name: "台湾", value: 0.1798076923076923 },
+  { name: "江西", value: 98.36538461538461 },
+  { name: "山东", value: 222.1153846153846 },
+  { name: "海南", value: 10.048076923076923 },
+  { name: "安徽", value: 89.90384615384616 },
+  { name: "黑龙江", value: 40.19230769230769 },
+  { name: "湖北", value: 78.26923076923076 },
+  { name: "甘肃", value: 34.90384615384615 },
+  { name: "四川", value: 126.92307692307693 },
+  { name: "浙江", value: 87.78846153846153 },
+  { name: "辽宁", value: 41.25 },
+  { name: "青海", value: 8.461538461538462 },
+  { name: "内蒙古", value: 40.19230769230769 },
+  { name: "天津", value: 28.55769230769231 },
+  { name: "西藏", value: 1.798076923076923 },
+  { name: "贵州", value: 71.92307692307693 },
+  { name: "宁夏", value: 22.211538461538463 },
+  { name: "上海", value: 24.326923076923077 },
+  { name: "广西", value: 99.42307692307692 },
+  { name: "香港特别行政区", value: 0.033846153846153845 },
+  { name: "吉林", value: 29.615384615384617 },
+  { name: "澳门特别行政区", value: 0.023269230769230768 },
+  { name: "重庆", value: 56.05769230769231 }]
 
 
 let geoCoordMap = {}
@@ -121,7 +155,7 @@ const option = {
       rippleEffect: {
         brushType: 'fill',
         period: 5,//周期
-        scale: 3,//波纹比例
+        scale: 2,//波纹比例
       },
       hoverAnimation: false,
       // label: {
@@ -144,7 +178,7 @@ const option = {
 module.exports = option
 
 fs.readdirSync('image').map((file) => {
-  fs.unlink(`image/${file}`,(err) => {
+  fs.unlink(`image/${file}`, (err) => {
     if (err) {
       console.log(err);
     } else {
@@ -153,11 +187,11 @@ fs.readdirSync('image').map((file) => {
   });
 });
 
-  node_echarts({
-    path: __dirname + `/image/area`,
-    option: option,
-    width: 1000,
-    height: 500
-  }, chinaJson)
+node_echarts({
+  path: __dirname + `/image/area`,
+  option: option,
+  width: 362,
+  height: 400
+}, chinaJson)
 
 
