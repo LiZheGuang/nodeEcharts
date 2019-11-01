@@ -191,7 +191,8 @@ node_echarts({
   path: __dirname + `/image/area`,
   option: option,
   width: 362,
-  height: 400
-}, chinaJson)
+  height: 400,
+  chinaJson:chinaJson
+})
 
 
