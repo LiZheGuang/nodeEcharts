@@ -20,10 +20,13 @@
   },
   "homepage": "https://github.com/LiZheGuang/nodeEchats#readme",
   "dependencies": {
+    "apng-assembler": "^1.0.2",
     "canvas": "^2.6.0",
+    "crc": "^3.8.0",
     "echarts": "^4.4.0",
     "gifencoder": "^2.0.1",
     "node-echarts": "^1.1.4",
-    "png-file-stream": "^1.2.1"
+    "png-file-stream": "^1.2.1",
+    "upng-js": "^2.1.0"
   }
 }

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./lib/apng.js"></script>
+</head>
+
+<body>
+    <img src="./image/area01.png" alt="">
+    <img src="./image/area02.png" alt="">
+    <img src="./image/area03.png" alt="">
+    <img src="./image/area04.png" alt="">
+    <img src="./image/area05.png" alt="">
+    <img src="./image/area06.png" alt="">
+    <img src="./image/area07.png" alt="">
+    <img src="./image/area08.png" alt="">
+    <img src="./image/area09.png" alt="">
+</body>
+<script>
+    window.onload = function () {
+        var images = document.querySelectorAll("img");
+        console.log(images)
+        APNG.ifNeeded().then(function () {
+            console.log('2')
+
+            console.log(images)
+            for (var i = 0; i < images.length; i++) {
+                APNG.animateImage(images[i])
+            };
+        });
+    }
+
+</script>
+
+</html>
