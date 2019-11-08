@@ -70,6 +70,8 @@ var convertData = function (data) {
 
 const option = {
   backgroundColor: 'transparent',
+  // backgroundColor: 'white',
+
   tooltip: {
     trigger: 'item'
   },
@@ -155,7 +157,7 @@ const option = {
       rippleEffect: {
         brushType: 'fill',
         period: 5,//周期
-        scale: 2,//波纹比例
+        scale: 3,//波纹比例
       },
       hoverAnimation: false,
       // label: {
